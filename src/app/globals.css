@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-ar), "Tajawal", system-ui, -apple-system, sans-serif;
+  background-color: #07080d;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+.font-en {
+  font-family: var(--font-en), "Space Grotesk", system-ui, sans-serif;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.35);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  border: 2px solid #07080d;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+:focus-visible {
+  outline: 2px solid rgba(34, 211, 238, 0.6);
+  outline-offset: 2px;
+}
+
+.gradient-text {
+  background: linear-gradient(100deg, #67e8f9 0%, #a5b4fc 48%, #f0abfc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(42px, -32px) scale(1.08);
+  }
+  66% {
+    transform: translate(-30px, 26px) scale(0.95);
+  }
+}
+.animate-blob {
+  animation: drift 24s ease-in-out infinite;
+}
+
+@keyframes fadeup {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-fadeup {
+  animation: fadeup 0.5s cubic-bezier(0.22, 0.68, 0.32, 1) both;
+}
+
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-pop {
+  animation: pop 0.25s ease-out both;
+}
+
+@keyframes fieldflash {
+  0% {
+    box-shadow:
+      inset 0 0 0 2px rgba(52, 211, 153, 0.85),
+      inset 0 0 44px rgba(52, 211, 153, 0.22);
+  }
+  100% {
+    box-shadow:
+      inset 0 0 0 0 rgba(52, 211, 153, 0),
+      inset 0 0 0 rgba(52, 211, 153, 0);
+  }
+}
+.animate-fieldflash {
+  animation: fieldflash 0.9s ease-out both;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 0.68, 0.32, 1),
+    transform 0.85s cubic-bezier(0.22, 0.68, 0.32, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+select option {
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
